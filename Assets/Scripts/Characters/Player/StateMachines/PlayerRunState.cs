@@ -35,6 +35,7 @@ public class PlayerRunState : PlayerBaseState ,IState
     private void TargetInitialize() // 타겟 초기화
     {
         isRotationComplete = false;
+        isMovementComplete = false;
         targetDir = GetTargetDirection();
         targetRotation = Quaternion.LookRotation(targetDir); 
         rotationSpeed = stateMachine.Player.PlayerStat.RotationSpeed;

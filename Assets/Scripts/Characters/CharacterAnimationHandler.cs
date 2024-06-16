@@ -7,26 +7,26 @@ public class CharacterAnimationHandler : MonoBehaviour
 {
     [field:Header("# Animation Data")]
     [field:SerializeField] public AnimationData AnimationData { get; private set; }
-    private Animator animator;
+    public Animator Animator { get; private set; }
 
     private void Awake()
     {
-        animator = GetComponentInChildren<Animator>();
+        Animator = GetComponentInChildren<Animator>();
         AnimationData = new AnimationData();
     }
 
     public void StartAnimation(int animationHash)
     {
-        animator.SetBool(animationHash, true);
+        Animator.SetBool(animationHash, true);
     }
     
     public void StopAnimation(int animationHash)
     {
-        animator.SetBool(animationHash, false);
+        Animator.SetBool(animationHash, false);
     }
 
     public void SetTriggerAnimation(int animationHash)
     {
-        animator.SetTrigger(animationHash);
+        Animator.SetTrigger(animationHash);
     }
 }

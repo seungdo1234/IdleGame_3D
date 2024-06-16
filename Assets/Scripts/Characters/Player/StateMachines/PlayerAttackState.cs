@@ -24,7 +24,7 @@ public class PlayerAttackState : PlayerBaseState ,IState
 
     public  void Update()
     {
-        if (!stateMachine.Target.gameObject.activeSelf)
+        if (stateMachine.Target == null && playerAnimation.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f )
         {
             stateMachine.ChangeState(stateMachine.ChasingState);
         }
