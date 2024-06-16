@@ -26,15 +26,15 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        if(transform.parent != null && transform.root != null) // 해당 오브젝트가 자식 오브젝트라면
-        {
-            DontDestroyOnLoad(this.transform.root.gameObject); // 부모 오브젝트를 DontDestroyOnLoad 처리
-        }
-        else
-        {
-            DontDestroyOnLoad(this.gameObject); // 해당 오브젝트가 최 상위 오브젝트라면 자신을 DontDestroyOnLoad 처리
-        }
-    }
+    // private void Awake()
+    // {
+    //     if(transform.parent != null && transform.root != null) // 해당 오브젝트가 자식 오브젝트라면
+    //     {
+    //         DontDestroyOnLoad(this.transform.root.gameObject); // 부모 오브젝트를 DontDestroyOnLoad 처리
+    //     }
+    //     else
+    //     {
+    //         DontDestroyOnLoad(this.gameObject); // 해당 오브젝트가 최 상위 오브젝트라면 자신을 DontDestroyOnLoad 처리
+    //     }
+    // }
 }

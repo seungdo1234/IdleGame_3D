@@ -11,10 +11,11 @@ public class CharacterSO : ScriptableObject
     
     [field:Header("# MoveData")]
     [field: SerializeField][field:Range(1f, 25f)] public float BaseMoveSpeed { get; private set; } = 5f;
-    [field: SerializeField][field: Range(1f, 25f)] public float BaseRotationSpeed { get; private set; } = 1f; // 로테이션 속도
+    [field: SerializeField][field: Range(1f, 1000f)] public float BaseRotationSpeed { get; private set; } = 100f; // 로테이션 속도
     
     [field:Header("# AttackData")]
     [field: SerializeField][field:Range(1f, 20f)] public float BaseAttackValue { get; private set; } = 15f;
+    [field: SerializeField][field:Range(0f, 10f)] public float BaseAttackRange { get; private set; } = 5f;
     [field: SerializeField][field:Range(0f, 3f)] public float BaseAttackDelay { get; private set; } = 1.5f;
     [field: SerializeField][field:Range(0f, 100f)] public float BaseCriticalPercent { get; private set; } = 10f;
     [field: SerializeField][field:Range(1f, 5f)] public float BaseCriticalDamage { get; private set; } = 1.5f;

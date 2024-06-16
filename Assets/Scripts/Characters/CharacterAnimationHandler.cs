@@ -11,7 +11,7 @@ public class CharacterAnimationHandler : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         AnimationData = new AnimationData();
     }
 
@@ -23,5 +23,10 @@ public class CharacterAnimationHandler : MonoBehaviour
     public void StopAnimation(int animationHash)
     {
         animator.SetBool(animationHash, false);
+    }
+
+    public void SetTriggerAnimation(int animationHash)
+    {
+        animator.SetTrigger(animationHash);
     }
 }

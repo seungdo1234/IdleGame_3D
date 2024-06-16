@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    private void Start()
-    {
-    }
+    [field:SerializeField] public Transform StartWaypoint { get; private set; }
+    [field:SerializeField] public Transform EndWaypoint { get; private set; }
 }

@@ -4,24 +4,38 @@ using UnityEngine;
 
 public class PlayerAttackState : PlayerBaseState ,IState
 {
+
+    private float timer;
     public PlayerAttackState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
-
-
-    public virtual void Enter()
+    
+    public  void Enter()
     {
-
+        playerAnimation.StartAnimation(playerAnimation.AnimationData.AttackParameterHash);
+        
+        timer = float.MaxValue;
     }
 
-    public virtual void Exit()
+    public  void Exit()
     {
-
+        playerAnimation.StopAnimation(playerAnimation.AnimationData.AttackParameterHash);
     }
 
-    public virtual void Update()
+    public  void Update()
     {
-   
+        if (!stateMachine.Target.gameObject.activeSelf)
+        {
+            stateMachine.ChangeState(stateMachine.ChasingState);
+        }
+        
+        timer += Time.deltaTime;
+
+        if (timer > stateMachine.Player.PlayerStat.AttackDelay)
+        {
+            playerAnimation.SetTriggerAnimation(playerAnimation.AnimationData.BaseAttackParameterHash);
+            timer = 0f;
+        }
     }
     
 }

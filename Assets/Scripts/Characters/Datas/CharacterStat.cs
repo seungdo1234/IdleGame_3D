@@ -16,6 +16,7 @@ public class CharacterStat
     
     [field:Header("# AttackData")]
     [field: SerializeField] public float AttackValue { get; private set; }
+    [field: SerializeField] public float AttackRange { get; private set; }
     [field: SerializeField] public float AttackDelay { get; private set; }
     [field: SerializeField] public float CriticalPercent { get; private set; } 
     [field: SerializeField] public float CriticalDamage { get; private set; }
@@ -30,6 +31,7 @@ public class CharacterStat
         RotationSpeed = characterSo.BaseRotationSpeed;
 
         AttackValue = characterSo.BaseAttackValue;
+        AttackRange = characterSo.BaseAttackRange;
         AttackDelay = characterSo.BaseAttackDelay;
         CriticalPercent = characterSo.BaseCriticalPercent;
         CriticalDamage = characterSo.BaseCriticalDamage;
