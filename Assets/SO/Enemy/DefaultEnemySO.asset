@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56cb2c410a1a4d829c4e4cc6249b1bf9, type: 3}
   m_Name: DefaultEnemySO
   m_EditorClassIdentifier: 
-  <BaseHealth>k__BackingField: 100
+  <BaseHealth>k__BackingField: 20
   <BaseMoveSpeed>k__BackingField: 15
   <BaseRotationSpeed>k__BackingField: 700
   <BaseAttackValue>k__BackingField: 15

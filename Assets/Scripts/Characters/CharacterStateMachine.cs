@@ -5,7 +5,7 @@ public interface IState
     public void Update(); // 업데이트 => 상태 업데이트
 }
 
-public abstract class CharacterStateMachine
+public class CharacterStateMachine
 {
     protected IState currentState;
 

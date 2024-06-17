@@ -21,13 +21,17 @@ public class EnemyChasingState :  EnemyBaseState ,IState
 
     public void Exit()
     {
+        enemyAnimation.StopAnimation(enemyAnimation.AnimationData.GroundParameterHash);
         enemyAnimation.StopAnimation(enemyAnimation.AnimationData.IdleParameterHash);
     }
 
     public void Update()
     {
+        if(stateMachine.Enemy.HealthSystem.isDead) return;
+        
         if (ChasingTarget())
         {
+            Debug.Log("RUn 상태");
             stateMachine.ChangeState(stateMachine.RunState);
         }
     }

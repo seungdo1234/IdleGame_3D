@@ -40,7 +40,7 @@ public class PlayerAttackState : PlayerBaseState ,IState
     public  void Update()
     {
         AnimatorStateInfo curAnimationInfo = playerAnimation.Animator.GetCurrentAnimatorStateInfo(0);
-        if (!stateMachine.Target.gameObject.activeSelf && curAnimationInfo.normalizedTime >= 0.8f )
+        if (targetHealthSystem.isDead && curAnimationInfo.normalizedTime >= 0.8f )
         {
             stateMachine.ChangeState(stateMachine.ChasingState);
         }

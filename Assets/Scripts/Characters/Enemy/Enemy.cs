@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Enemy : PoolObject
 {
@@ -13,28 +14,39 @@ public class Enemy : PoolObject
     [field:SerializeField] public Transform Model { get; private set; }
     
     public CharacterController Controller { get; private set; }
-    
-    private HealthSystem healthSystem;
+    public CharacterAnimationHandler AnimationHandler { get; private set; }
+    public HealthSystem HealthSystem { get; private set; }
     private EnemyStateMachine stateMachine;
     private void Awake()
     {
         Controller = GetComponent<CharacterController>();
-        healthSystem = GetComponent<HealthSystem>();
+        HealthSystem = GetComponent<HealthSystem>();
+        AnimationHandler = GetComponent<CharacterAnimationHandler>();
+        
+        HealthSystem.OnDead += DeadEvent;
+        
         stateMachine = new EnemyStateMachine(this);
     }
 
     public void Init(EnemySO enemySO)
     {
         EnemyStat = new EnemyStat(enemySO);
-        healthSystem.Stat = EnemyStat;
+        HealthSystem.Stat = EnemyStat;
         stateMachine.ChangeState(stateMachine.ChasingState);
+        Controller.enabled = true;
     }
     
-    // private void Start()
-    // {
-    //     stateMachine.ChangeState(stateMachine.ChasingState);
-    // }
-    //
+    private void DeadEvent()
+    {
+        Controller.enabled = false;
+        AnimationHandler.SetTriggerAnimation(AnimationHandler.AnimationData.DeadParameterHash);
+        Invoke("DisableEnemy", 2.5f);
+    }
+
+    private void DisableEnemy()
+    {
+        gameObject.SetActive(false);
+    }
     
     private void Update()
     {

@@ -18,7 +18,7 @@ public class EnemyRunState :   EnemyBaseState ,IState
 
     public void Enter()
     {
-        Debug.Log("달려");
+        enemyAnimation.StartAnimation(enemyAnimation.AnimationData.GroundParameterHash);
         enemyAnimation.StartAnimation(enemyAnimation.AnimationData.RunParameterHash);
         
         InitializeTarget();
@@ -31,21 +31,21 @@ public class EnemyRunState :   EnemyBaseState ,IState
     }
     public void Update()
     {
+        if(stateMachine.Enemy.HealthSystem.isDead) return;
+        
         if (isRotationComplete && isMovementComplete)
         {
             stateMachine.ChangeState(stateMachine.AttackState);
             return;
         }
 
-        if (!isRotationComplete)
-        {
-            Rotate();
-        }
-
+        
         if (!isMovementComplete)
         {
             Move();
         }
+        
+        Rotate();
     }
     
     private void Move()
@@ -55,20 +55,24 @@ public class EnemyRunState :   EnemyBaseState ,IState
             isMovementComplete = true;
             return;
         }
+        targetDir = GetTargetDirection();
         enemy.Controller.Move(targetDir * (enemy.EnemyStat.MoveSpeed * Time.deltaTime));
     }
 
-    private void Rotate()
+    private void Rotate() // 타겟을 향해 회전
     {
+        targetRotation = Quaternion.LookRotation(targetDir);
+        
         if (Quaternion.Angle(enemy.Model.localRotation, targetRotation) < 0.1f)
         {
             isRotationComplete = true;
             enemy.Model.localRotation = targetRotation;
-            return;
         }
-        
-        // Debug.Log(Quaternion.RotateTowards(enemy.Model.localRotation, targetRotation, Time.deltaTime * rotationSpeed));
-        enemy.Model.localRotation = Quaternion.RotateTowards(enemy.Model.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
+        else // 아직 회전이 덜됐을 때
+        {
+            isRotationComplete = false;
+            enemy.Model.localRotation = Quaternion.RotateTowards(enemy.Model.localRotation, targetRotation, Time.deltaTime * rotationSpeed);   
+        }
     }
     
     private void InitializeTarget()
@@ -76,9 +80,6 @@ public class EnemyRunState :   EnemyBaseState ,IState
         rotationSpeed = enemy.EnemyStat.RotationSpeed;
         isRotationComplete = false;
         isMovementComplete = false;
-        targetDir = GetTargetDirection();
-        targetRotation = Quaternion.LookRotation(targetDir);
-        Debug.Log(targetRotation.eulerAngles);
     }
     
     private Vector3 GetTargetDirection()

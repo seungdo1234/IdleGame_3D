@@ -17,14 +17,15 @@ public class EnemyStateMachine : CharacterStateMachine
     public EnemyStateMachine(Enemy enemy)
     {
         this.Enemy = enemy;
-        AnimationHandler = enemy.GetComponent<CharacterAnimationHandler>();
+        AnimationHandler = enemy.AnimationHandler;
         
         ChasingState = new EnemyChasingState(this);
         RunState = new EnemyRunState(this);
         AttackState = new EnemyAttackState(this);
 
         Target = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthSystem>();
-        Debug.Log(Target.gameObject.name);
+        
     }
+    
 
 }
