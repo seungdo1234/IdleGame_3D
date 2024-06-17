@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     private void SetPlayerPosition() // 캐릭터 컨트롤러 이슈로 인한 강제이동 ?
     {
         Controller.enabled = false;
-        transform.position = GameManager.Instance.StartWaypoint.position;
+        transform.position = GameManager.Instance.StageManager.StartWaypoint.position;
         Controller.enabled = true;
     }
     

@@ -34,7 +34,7 @@ public class PlayerChasingState : PlayerBaseState, IState
     {
         if (em.SpawnEnemyList == null || em.SpawnEnemyList.Count == 0)
         {
-            return gm.GetEndWaypoint;
+            return gm.StageManager.GetEndWaypoint;
         }
         
         Transform minDistanceTarget = null;
