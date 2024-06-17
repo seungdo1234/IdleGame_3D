@@ -4,23 +4,30 @@ using UnityEngine;
 
 public class Enemy : PoolObject
 {
-    [ Header("# Enemy Data")]
-    [SerializeField] private CharacterSO CharacterData;
-    
+
     [field: Header("# Enemy Stats")]
-    [field: SerializeField] public CharacterStat EnemyStat { get; private set; }
+    [field: SerializeField] public EnemyStat EnemyStat { get; private set; }
+    
+        
+    [field: Header("# Character Model")]
+    [field:SerializeField] public Transform Model { get; private set; }
     
     public CharacterController Controller { get; private set; }
     
     private HealthSystem healthSystem;
+    private EnemyStateMachine stateMachine;
     private void Awake()
     {
-        EnemyStat = new CharacterStat(CharacterData);
         Controller = GetComponent<CharacterController>();
-        
         healthSystem = GetComponent<HealthSystem>();
+        stateMachine = new EnemyStateMachine(this);
+    }
+
+    public void Init(EnemySO enemySO)
+    {
+        EnemyStat = new EnemyStat(enemySO);
         healthSystem.Stat = EnemyStat;
-        
+        stateMachine.ChangeState(stateMachine.ChasingState);
     }
     
     // private void Start()
@@ -28,8 +35,9 @@ public class Enemy : PoolObject
     //     stateMachine.ChangeState(stateMachine.ChasingState);
     // }
     //
-    // private void Update()
-    // {
-    //     stateMachine.Update(); 
-    // }
+    
+    private void Update()
+    {
+        stateMachine.Update(); 
+    }
 }

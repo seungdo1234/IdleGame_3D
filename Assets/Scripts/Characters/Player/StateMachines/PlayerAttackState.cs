@@ -81,8 +81,6 @@ public class PlayerAttackState : PlayerBaseState ,IState
         {
             isAttack = false;
             targetHealthSystem.HealthEvent(-damage);
-            
-            Debug.Log("공격");
         }
     }
 }

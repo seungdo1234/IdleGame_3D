@@ -5,10 +5,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [ Header("# Player Data")]
-    [SerializeField] private CharacterSO CharacterData;
+    [SerializeField] private PlayerSO PlayerData;
     
     [field: Header("# Player Stats")]
-    [field: SerializeField] public CharacterStat PlayerStat { get; private set; }
+    [field: SerializeField] public PlayerStat PlayerStat { get; private set; }
     
     [field: Header("# Character Model")]
     [field:SerializeField] public Transform Model { get; private set; }
@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     private HealthSystem healthSystem;
     private void Awake()
     {
-        PlayerStat = new CharacterStat(CharacterData);
+        PlayerStat = new PlayerStat(PlayerData);
         Controller = GetComponent<CharacterController>();
         
         healthSystem = GetComponent<HealthSystem>();
@@ -29,8 +29,8 @@ public class Player : MonoBehaviour
     
     private IEnumerator Start()
     {
-        // TODO : EnemyManager Start 순서와 겹쳐 일단 임시로 조치해놓음. 추후에 수정할 예정
-        yield return new WaitForSeconds(0.5f);
+        // TODO : EnemyManager Start함수 순서보다 빨라서 일단 임시로 조치해놓음. 추후에 수정할 예정
+        yield return null;
         stateMachine.ChangeState(stateMachine.ChasingState);
     }
     

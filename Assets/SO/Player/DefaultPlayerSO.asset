@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4943442887bc2b458de36219f47b6f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 827dc0a407dd4d1fb8ef8a4d8e083796, type: 3}
   m_Name: DefaultPlayerSO
   m_EditorClassIdentifier: 
   <BaseHealth>k__BackingField: 100
-  <BaseMoveSpeed>k__BackingField: 18
+  <BaseMoveSpeed>k__BackingField: 10
   <BaseRotationSpeed>k__BackingField: 700
   <BaseAttackValue>k__BackingField: 15
   <BaseAttackRange>k__BackingField: 3.5
   <BaseAttackDelay>k__BackingField: 2
+  <BaseAttackTransitionTime>k__BackingField: 0.4
   <BaseCriticalPercent>k__BackingField: 10
   <BaseCriticalDamage>k__BackingField: 1.5
-  <BaseAttackTransitionTime>k__BackingField: 0.4
   <BaseCriticalAttackTransitionTime>k__BackingField: 0.4

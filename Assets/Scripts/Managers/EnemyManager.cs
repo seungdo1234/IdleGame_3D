@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 public class EnemyManager : Singleton<EnemyManager>
 {
     [field:Header("# Enemy Info")]
+    [SerializeField] private EnemySO enemySO;
     [field: SerializeField] public List<Enemy> SpawnEnemyList { get; private set; } = new List<Enemy>();
 
     [field: Header("# Enemy Spawn Info")]
@@ -32,7 +33,8 @@ public class EnemyManager : Singleton<EnemyManager>
         for (int i = 0; i < enemySpawnNum; i++)
         {
             Enemy enemy = GameManager.Instance.Pool.SpawnFromPool(EPoolObjectType.Enemy).ReturnMyConponent<Enemy>();
-
+            enemy.Init(enemySO);
+                
             while (true)
             {
                 int rand = Random.Range(0, SpawnPoints.Length);
@@ -46,5 +48,6 @@ public class EnemyManager : Singleton<EnemyManager>
             }
         }
     }
+
 }
 
