@@ -39,15 +39,12 @@ public class PlayerRunState : PlayerBaseState, IState
             return;
         }
 
-        if (!isRotationComplete)
-        {
-            Rotate();
-        }
-
         if (!isMovementComplete)
         {
             Move();
         }
+
+        Rotate();
     }
 
     private void InitializeTarget()
@@ -77,6 +74,7 @@ public class PlayerRunState : PlayerBaseState, IState
             isMovementComplete = true;
             return;
         }
+        targetDir = GetTargetDirection();
         player.Controller.Move(targetDir * (player.PlayerStat.MoveSpeed * Time.deltaTime));
     }
 
@@ -86,10 +84,12 @@ public class PlayerRunState : PlayerBaseState, IState
         {
             isRotationComplete = true;
             player.Model.localRotation = targetRotation;
-            return;
         }
-
-        player.Model.localRotation = Quaternion.RotateTowards(player.Model.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
+        else
+        {
+            isRotationComplete = false;
+            player.Model.localRotation = Quaternion.RotateTowards(player.Model.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
+        }
     }
 
     private Vector3 GetTargetDirection()

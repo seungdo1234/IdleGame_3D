@@ -11,6 +11,7 @@ public class HealthSystem : MonoBehaviour
     
     public void HealthEvent(float amount)
     {
+        Debug.Log(amount);
         if(isDead)return;
 
         Stat.CurHealth += amount;
