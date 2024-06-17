@@ -18,7 +18,6 @@ public class PlayerChasingState : PlayerBaseState, IState
         stateMachine.Target = ChasingTarget();
         
         stateMachine.ChangeState(stateMachine.RunState);
-        
     }
 
     public void Exit()

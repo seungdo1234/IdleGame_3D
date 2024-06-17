@@ -31,7 +31,6 @@ public class EnemyChasingState :  EnemyBaseState ,IState
         
         if (ChasingTarget())
         {
-            Debug.Log("RUn 상태");
             stateMachine.ChangeState(stateMachine.RunState);
         }
     }

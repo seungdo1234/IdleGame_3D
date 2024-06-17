@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DefaultPlayerSO
   m_EditorClassIdentifier: 
   <BaseHealth>k__BackingField: 100
-  <BaseMoveSpeed>k__BackingField: 10
+  <BaseMoveSpeed>k__BackingField: 15
   <BaseRotationSpeed>k__BackingField: 700
   <BaseAttackValue>k__BackingField: 15
   <BaseAttackRange>k__BackingField: 3.5

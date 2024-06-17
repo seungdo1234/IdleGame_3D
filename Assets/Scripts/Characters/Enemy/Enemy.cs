@@ -32,14 +32,16 @@ public class Enemy : PoolObject
     {
         EnemyStat = new EnemyStat(enemySO);
         HealthSystem.Stat = EnemyStat;
-        stateMachine.ChangeState(stateMachine.ChasingState);
         Controller.enabled = true;
+        HealthSystem.isDead = false;
+        stateMachine.ChangeState(stateMachine.ChasingState);
     }
     
     private void DeadEvent()
     {
         Controller.enabled = false;
         AnimationHandler.SetTriggerAnimation(AnimationHandler.AnimationData.DeadParameterHash);
+        // 임시로 Invoke 사용 추후 수정할 예정
         Invoke("DisableEnemy", 2.5f);
     }
 

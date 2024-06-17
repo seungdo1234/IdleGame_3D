@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -13,6 +15,8 @@ public class GameManager : Singleton<GameManager>
     {
         get
         {
+            if(currentWaypointIndex == 1)
+                stageManager.StartNewStage();
             Transform waypoint = EndWayPoints[currentWaypointIndex];
             currentWaypointIndex = (currentWaypointIndex + 1) % EndWayPoints.Length; // 인덱스를 증가시키고 배열 길이로 모듈러 연산
             return waypoint;
@@ -21,6 +25,10 @@ public class GameManager : Singleton<GameManager>
 
     [field:Header("# ObjectPool")]
     [field:SerializeField] public PoolManager Pool { get; private set; }
-    
-    
+
+
+    [Header("# Stage Info")]
+    [SerializeField] private StageManager stageManager;
+    public Player Player { get; set; }
+
 }
