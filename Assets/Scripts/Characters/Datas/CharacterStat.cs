@@ -7,8 +7,8 @@ using UnityEngine;
 public class CharacterStat 
 {
     [field:Header("# BaseData")]
-    [field: SerializeField]public float MaxHealth { get; private set; }
-    [field: SerializeField]public float CurHealth { get; private set; }
+    [field: SerializeField]public float MaxHealth { get;  set; }
+    [field: SerializeField]public float CurHealth { get;  set; }
     
     [field:Header("# MoveData")]
     [field: SerializeField]public float MoveSpeed { get; private set; } 
@@ -20,6 +20,8 @@ public class CharacterStat
     [field: SerializeField] public float AttackDelay { get; private set; }
     [field: SerializeField] public float CriticalPercent { get; private set; } 
     [field: SerializeField] public float CriticalDamage { get; private set; }
+    [field: SerializeField] public float CriticalTransitionTime { get; private set; }
+    [field: SerializeField] public float AttackTransitionTime { get; private set; }
 
 
     public CharacterStat(CharacterSO characterSo)
@@ -35,5 +37,7 @@ public class CharacterStat
         AttackDelay = characterSo.BaseAttackDelay;
         CriticalPercent = characterSo.BaseCriticalPercent;
         CriticalDamage = characterSo.BaseCriticalDamage;
+        AttackTransitionTime = characterSo.BaseAttackTransitionTime;
+        CriticalTransitionTime = characterSo.BaseCriticalAttackTransitionTime;
     }
 } 

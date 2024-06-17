@@ -2,20 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRunState : PlayerBaseState ,IState
+public class PlayerRunState : PlayerBaseState, IState
 {
-    private Player player;
-    
+    private readonly Player player;
+    private readonly float rotationSpeed;
     private bool isRotationComplete;
     private bool isMovementComplete;
-    
     private Vector3 targetDir;
     private Quaternion targetRotation;
-    private float rotationSpeed;
-    
+
     public PlayerRunState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
         player = stateMachine.Player;
+        rotationSpeed = player.PlayerStat.RotationSpeed;
     }
 
     public void Enter()
@@ -23,7 +22,7 @@ public class PlayerRunState : PlayerBaseState ,IState
         playerAnimation.StartAnimation(playerAnimation.AnimationData.GroundParameterHash);
         playerAnimation.StartAnimation(playerAnimation.AnimationData.RunParameterHash);
 
-        TargetInitialize();
+        InitializeTarget();
     }
 
     public void Exit()
@@ -32,30 +31,42 @@ public class PlayerRunState : PlayerBaseState ,IState
         playerAnimation.StopAnimation(playerAnimation.AnimationData.RunParameterHash);
     }
 
-    private void TargetInitialize() // 타겟 초기화
-    {
-        isRotationComplete = false;
-        isMovementComplete = false;
-        targetDir = GetTargetDirection();
-        targetRotation = Quaternion.LookRotation(targetDir); 
-        rotationSpeed = stateMachine.Player.PlayerStat.RotationSpeed;
-    }
-    
     public void Update()
     {
         if (isRotationComplete && isMovementComplete)
         {
-            stateMachine.ChangeState(stateMachine.AttackState);
+            SwitchStateBasedOnEnemies();
+            return;
         }
-        
-        if(!isRotationComplete)
+
+        if (!isRotationComplete)
         {
-            Rotate();   
+            Rotate();
         }
 
         if (!isMovementComplete)
         {
-            Move();   
+            Move();
+        }
+    }
+
+    private void InitializeTarget()
+    {
+        isRotationComplete = false;
+        isMovementComplete = false;
+        targetDir = GetTargetDirection();
+        targetRotation = Quaternion.LookRotation(targetDir);
+    }
+
+    private void SwitchStateBasedOnEnemies()
+    {
+        if (EnemyManager.Instance.SpawnEnemyList.Count > 0)
+        {
+            stateMachine.ChangeState(stateMachine.AttackState);
+        }
+        else
+        {
+            stateMachine.ChangeState(stateMachine.ChasingState);
         }
     }
 
@@ -63,14 +74,13 @@ public class PlayerRunState : PlayerBaseState ,IState
     {
         if (Vector3.Distance(player.transform.position, stateMachine.Target.position) < player.PlayerStat.AttackRange)
         {
-
             isMovementComplete = true;
             return;
         }
-        player.Controller.Move(targetDir * (stateMachine.Player.PlayerStat.MoveSpeed * Time.deltaTime));
+        player.Controller.Move(targetDir * (player.PlayerStat.MoveSpeed * Time.deltaTime));
     }
-    
-    private void Rotate() // 회전
+
+    private void Rotate()
     {
         if (Quaternion.Angle(player.Model.localRotation, targetRotation) < 0.1f)
         {
@@ -78,15 +88,14 @@ public class PlayerRunState : PlayerBaseState ,IState
             player.Model.localRotation = targetRotation;
             return;
         }
-        
-        // 회전
+
         player.Model.localRotation = Quaternion.RotateTowards(player.Model.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
     }
-    
+
     private Vector3 GetTargetDirection()
     {
-        Vector3 dir = (stateMachine.Target.position - player.transform.position).normalized;
-        dir.y = 0f; // Y축을 0으로 설정하여 평면 회전만 고려
-        return dir;
+        Vector3 direction = (stateMachine.Target.position - player.transform.position).normalized;
+        direction.y = 0f; // Y축을 0으로 설정하여 평면 회전만 고려
+        return direction;
     }
 }

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4943442887bc2b458de36219f47b6f1, type: 3}
-  m_Name: DefaultPlayerSO
+  m_Name: DefaultEnemySO
   m_EditorClassIdentifier: 
   <BaseHealth>k__BackingField: 100
-  <BaseMoveSpeed>k__BackingField: 18
-  <BaseRotationSpeed>k__BackingField: 700
+  <BaseMoveSpeed>k__BackingField: 12
+  <BaseRotationSpeed>k__BackingField: 500
   <BaseAttackValue>k__BackingField: 15
   <BaseAttackRange>k__BackingField: 3.5
   <BaseAttackDelay>k__BackingField: 2

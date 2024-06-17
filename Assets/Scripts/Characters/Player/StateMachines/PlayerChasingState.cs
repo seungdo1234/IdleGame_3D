@@ -33,23 +33,23 @@ public class PlayerChasingState : PlayerBaseState, IState
 
     private Transform ChasingTarget()
     {
-        if (em.enemys == null || em.enemys.Count == 0)
+        if (em.SpawnEnemyList == null || em.SpawnEnemyList.Count == 0)
         {
-            return gm.EndWaypoint;
+            return gm.GetEndWaypoint;
         }
         
         Transform minDistanceTarget = null;
         float minDistanceValue= float.MaxValue;
         
-        foreach (Transform target in em.enemys)
+        foreach (var target in em.SpawnEnemyList)
         {
             if(!target.gameObject.activeSelf) continue;
             
-            float distanceValue = Vector3.Distance(stateMachine.Player.transform.position, target.position);
+            float distanceValue = Vector3.Distance(stateMachine.Player.transform.position, target.transform.position);
             if (distanceValue < minDistanceValue)
             {
                 minDistanceValue = distanceValue;
-                minDistanceTarget = target;
+                minDistanceTarget = target.transform;
             }
         }
 
