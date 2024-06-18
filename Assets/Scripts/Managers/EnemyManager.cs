@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class EnemyManager : Singleton<EnemyManager>
@@ -13,8 +14,6 @@ public class EnemyManager : Singleton<EnemyManager>
     [field: SerializeField] public List<Enemy> SpawnEnemyList { get; private set; } = new List<Enemy>();
 
     [field: Header("# Enemy Spawn Info")]
-    [SerializeField] private int enemySpawnNum = 3;
-
     [field: SerializeField] public Transform[] SpawnPoints { get; private set; }
 
 
@@ -23,12 +22,7 @@ public class EnemyManager : Singleton<EnemyManager>
         SpawnEnemyList.Remove(SpawnEnemyList.Find(obj => enemy == obj.gameObject));
     }
 
-    private void Start()
-    {
-        SpawnEnemy();
-    }
-
-    public void SpawnEnemy()
+    public void SpawnEnemy(int enemySpawnNum) // 적 스폰
     {
         SpawnEnemyList.Clear();
 
@@ -51,7 +45,7 @@ public class EnemyManager : Singleton<EnemyManager>
         }
     }
 
-    private void SetEnemyPosition(Enemy enemy, int rand) // 캐릭터 컨트롤러 이슈로 인한 함수
+    private void SetEnemyPosition(Enemy enemy, int rand) // 캐릭터 컨트롤러 이슈로 인한 강제이동 함수
     {
         enemy.Controller.enabled = false;
         enemy.transform.position = SpawnPoints[rand].position;

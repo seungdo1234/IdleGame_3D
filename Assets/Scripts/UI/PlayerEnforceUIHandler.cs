@@ -12,19 +12,17 @@ public class PlayerEnforceUIHandler : MonoBehaviour
     [Header("# UI")]
     [SerializeField] private Image statBtnImage;
 
-
-    private void Start()
-    {
-        GameManager.Instance.StageManager.HUDEventHandler.OnButtonActivate += ActivateButton;
-    }
+    
 
     private void OnEnable()
     {
-        foreach (EnforceData data in EnforceDatas)
-        {
-            data.UpdateText();
-            data.enforceBtn.interactable = data.requireGold <= GameManager.Instance.Gold;
-        }
+        GameManager.Instance.StageManager.HUDEventHandler.OnButtonActivate += ActivateButton;
+        ActivateButton();
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.StageManager.HUDEventHandler.OnButtonActivate -= ActivateButton;
     }
 
     public void EnforceStat(int num)
@@ -49,6 +47,7 @@ public class PlayerEnforceUIHandler : MonoBehaviour
     {
         foreach (EnforceData data in EnforceDatas)
         {
+            data.UpdateText();
             data.enforceBtn.interactable = data.requireGold <= GameManager.Instance.Gold;
         }
     }

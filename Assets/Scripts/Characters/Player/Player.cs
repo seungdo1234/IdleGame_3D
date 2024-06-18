@@ -27,12 +27,9 @@ public class Player : MonoBehaviour
         stateMachine = new PlayerStateMachine(this);
     }
     
-    private IEnumerator Start()
+    private void Start()
     {
-        // TODO : EnemyManager Start함수 순서보다 빨라서 일단 임시로 조치해놓음. 추후에 수정할 예정
-        yield return null;
         GameManager.Instance.Player = this;
-        StartNewStage();
     }
 
 

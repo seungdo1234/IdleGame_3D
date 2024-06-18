@@ -329,35 +329,35 @@ MonoBehaviour:
   - enforceType: 0
     enforceLevel: 1
     requireGold: 2
-    increasePercent: 1.01
+    increasePercent: 1.001
     titleText: {fileID: 297300655}
     goldText: {fileID: 1604438062}
     enforceBtn: {fileID: 1715098429}
   - enforceType: 2
     enforceLevel: 1
     requireGold: 2
-    increasePercent: 1.01
+    increasePercent: 0.999
     titleText: {fileID: 1236593050}
     goldText: {fileID: 1655100073}
     enforceBtn: {fileID: 578155687}
   - enforceType: 1
     enforceLevel: 1
     requireGold: 2
-    increasePercent: 1.01
+    increasePercent: 1.001
     titleText: {fileID: 1926412749}
     goldText: {fileID: 2038507831}
     enforceBtn: {fileID: 1732016907}
   - enforceType: 3
     enforceLevel: 1
     requireGold: 2
-    increasePercent: 1.01
+    increasePercent: 1.001
     titleText: {fileID: 1574205539}
     goldText: {fileID: 1870703978}
     enforceBtn: {fileID: 1047634975}
   - enforceType: 4
     enforceLevel: 1
     requireGold: 2
-    increasePercent: 1.01
+    increasePercent: 1.001
     titleText: {fileID: 1699725057}
     goldText: {fileID: 1758408531}
     enforceBtn: {fileID: 2035725950}
@@ -1233,7 +1233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299334655}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.46055475, y: 0.000000034151284, z: -0.000000017719675, w: 0.8876313}
+  m_LocalRotation: {x: 0.46055475, y: -0.000000034151284, z: 0.000000017719675, w: 0.8876313}
   m_LocalPosition: {x: 12.1, y: 17, z: -47.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1328,7 +1328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.46055475, y: 0.000000034151284, z: -0.000000017719675, w: 0.8876313}
+  m_LocalRotation: {x: 0.46055475, y: -0.000000034151284, z: 0.000000017719675, w: 0.8876313}
   m_LocalPosition: {x: 12.1, y: 17, z: -47.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

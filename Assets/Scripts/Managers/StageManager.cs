@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
+    [Header("# Stage Info")]
+    [SerializeField] private int spawnEnemyNum;
+    [SerializeField] private int enemyLevelEvent;
+    
     [field:Header("# Stage WayPoint Info")]
     [field:SerializeField] public Transform StartWaypoint { get; private set; }
     [SerializeField] private Transform[] EndWayPoints;
@@ -15,8 +19,9 @@ public class StageManager : MonoBehaviour
         {
             if(currentWaypointIndex == 1)
                 StartNewStage();
+            
             Transform waypoint = EndWayPoints[currentWaypointIndex];
-            currentWaypointIndex = (currentWaypointIndex + 1) % EndWayPoints.Length; // 인덱스를 증가시키고 배열 길이로 모듈러 연산
+            currentWaypointIndex = (currentWaypointIndex + 1) % EndWayPoints.Length; 
             return waypoint;
         } 
     }
@@ -25,7 +30,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] private BackgroundEventHandler backgroundEventHandler;
     [SerializeField] private float stageFadeDuration = 2f;
 
-    [field:Header("# Gold")]
+    [field:Header("# HUD")]
     [field:SerializeField] public HUDEventHandler HUDEventHandler { get; private set; }
         
     private Coroutine newStageCoroutine;
@@ -34,6 +39,13 @@ public class StageManager : MonoBehaviour
     private void Awake()
     {
         wait = new WaitForSeconds(stageFadeDuration + 0.2f);
+    }
+
+    private IEnumerator Start()
+    {
+        // TODO : Player Start함수 순서보다 빨라서 일단 임시로 조치해놓음. 추후에 수정할 예정
+        yield return null;
+        StageInit();
     }
 
     public void StartNewStage()
@@ -51,10 +63,24 @@ public class StageManager : MonoBehaviour
     {
         backgroundEventHandler.FadeTo(1f, stageFadeDuration);
         yield return wait;
-        EnemyManager.Instance.SpawnEnemy();
-        GameManager.Instance.Player.StartNewStage();
+        StageInit();
+        StageLevelEvent();
         backgroundEventHandler.FadeTo(0f, stageFadeDuration);
-        GameManager.Instance.StageNum++;
         HUDEventHandler.UpdateStageText();
+    }
+
+    private void StageInit()
+    {
+        EnemyManager.Instance.SpawnEnemy(spawnEnemyNum);
+        GameManager.Instance.Player.StartNewStage();
+    }
+
+    private void StageLevelEvent()
+    {
+        int stageNum = ++GameManager.Instance.StageNum;
+        if (stageNum % enemyLevelEvent == 0 && EnemyManager.Instance.SpawnPoints.Length > spawnEnemyNum )
+        {
+            spawnEnemyNum++;
+        }
     }
 }
