@@ -10,12 +10,10 @@ public class EnemyManager : Singleton<EnemyManager>
 {
     [field: Header("# Enemy Info")]
     [SerializeField] private EnemySO enemySO;
-
     [field: SerializeField] public List<Enemy> SpawnEnemyList { get; private set; } = new List<Enemy>();
 
     [field: Header("# Enemy Spawn Info")]
     [field: SerializeField] public Transform[] SpawnPoints { get; private set; }
-
 
     public void EnemyDie(GameObject enemy)
     {
@@ -28,7 +26,7 @@ public class EnemyManager : Singleton<EnemyManager>
 
         for (int i = 0; i < enemySpawnNum; i++)
         {
-            Enemy enemy = GameManager.Instance.Pool.SpawnFromPool(EPoolObjectType.Enemy).ReturnMyConponent<Enemy>();
+            Enemy enemy = GameManager.Instance.Pool.SpawnFromPool(EPoolObjectType.Enemy).ReturnMyComponent<Enemy>();
             enemy.Init(enemySO);
 
             while (true)

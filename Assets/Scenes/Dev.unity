@@ -1233,7 +1233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299334655}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.46055475, y: 0.000000034151284, z: -0.000000017719675, w: 0.8876313}
+  m_LocalRotation: {x: 0.46055475, y: -0.000000034151284, z: 0.000000017719675, w: 0.8876313}
   m_LocalPosition: {x: 12.1, y: 17, z: -47.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1328,7 +1328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.46055475, y: 0.000000034151284, z: -0.000000017719675, w: 0.8876313}
+  m_LocalRotation: {x: 0.46055475, y: -0.000000034151284, z: 0.000000017719675, w: 0.8876313}
   m_LocalPosition: {x: 12.1, y: 17, z: -47.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1479,6 +1479,7 @@ MonoBehaviour:
     attackParameterName: '@Attack'
     baseAttackParameterName: BaseAttack
     criticalAttackParameterName: CriticalAttack
+    RunSpeedParameterName: RunSpeed
     criticalAttackSpeedParameterName: CriticalAttackSpeed
     baseAttackSpeedParameterName: BaseAttackSpeed
 --- !u!4 &370555252
