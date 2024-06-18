@@ -29,4 +29,15 @@ public class CharacterAnimationHandler : MonoBehaviour
     {
         Animator.SetTrigger(animationHash);
     }
+    
+    public void IncreaseAttackSpeedAnimation(float increaseValue) // 공격속도 증가에 맞게 애니메이션 속도도 증가시켜줌
+    {
+        Animator.SetFloat(AnimationData.BaseAttackSpeedParameterHash ,Animator.GetFloat(AnimationData.BaseAttackSpeedParameterHash) * (increaseValue + 0.002f));
+        Animator.SetFloat(AnimationData.CriticalAttackSpeedParameterHash ,Animator.GetFloat(AnimationData.CriticalAttackSpeedParameterHash) *  (increaseValue + 0.002f) );
+    }
+    
+    public void IncreaseRunSpeedAnimation(float increaseValue) // 공격속도 증가에 맞게 애니메이션 속도도 증가시켜줌
+    {
+        Animator.SetFloat(AnimationData.RunSpeedParameterHash ,Animator.GetFloat(AnimationData.RunSpeedParameterHash) * increaseValue);
+     }
 }

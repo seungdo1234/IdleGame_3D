@@ -28,9 +28,11 @@ public class PlayerStat : CharacterStat
                 AttackValue *= increasePercent;
                 break;
             case EnforceType.Speed:
+                GameManager.Instance.Player.AnimationHandler.IncreaseRunSpeedAnimation(increasePercent);
                 MoveSpeed *= increasePercent;
                 break;
             case EnforceType.AttackDelay:
+                GameManager.Instance.Player.AnimationHandler.IncreaseAttackSpeedAnimation(increasePercent);
                 AttackDelay *= increasePercent;
                 break;
             case EnforceType.CriticalPercent:

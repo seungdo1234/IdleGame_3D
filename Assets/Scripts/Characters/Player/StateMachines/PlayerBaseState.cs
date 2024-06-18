@@ -10,7 +10,7 @@ public class PlayerBaseState
     protected PlayerBaseState(PlayerStateMachine stateMachine)
     {
         this.stateMachine = stateMachine;
-        playerAnimation = stateMachine.AnimationHandler;
+        playerAnimation = stateMachine.Player.AnimationHandler;
     }
 
 }
