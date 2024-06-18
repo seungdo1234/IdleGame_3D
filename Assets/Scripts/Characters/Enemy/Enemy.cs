@@ -39,7 +39,7 @@ public class Enemy : PoolObject
     
     private void DeadEvent()
     {
-        GameManager.Instance.StageManager.HUDEventHandler.IncreaseGold(EnemyStat.GoldReward);
+        GameManager.Instance.StageManager.HUDEventHandler.ChangeGold(EnemyStat.GoldReward);
         Controller.enabled = false;
         AnimationHandler.SetTriggerAnimation(AnimationHandler.AnimationData.DeadParameterHash);
         // 임시로 Invoke 사용 추후 수정할 예정
