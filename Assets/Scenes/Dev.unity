@@ -5414,8 +5414,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baeca402272c00243a707e09289bac1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnEnemyNum: 1
-  enemyLevelEvent: 2
+  spawnEnemyNum: 15
+  enemyLevelEvent: 10
   <StartWaypoint>k__BackingField: {fileID: 576861559}
   EndWayPoints:
   - {fileID: 645841797}

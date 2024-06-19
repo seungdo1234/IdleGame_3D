@@ -19,6 +19,6 @@ MonoBehaviour:
   <BaseAttackRange>k__BackingField: 3.5
   <BaseAttackDelay>k__BackingField: 2
   <BaseAttackTransitionTime>k__BackingField: 0.4
-  <BaseCriticalPercent>k__BackingField: 10
+  <BaseCriticalPercent>k__BackingField: 72.3
   <BaseCriticalDamage>k__BackingField: 1.5
   <BaseCriticalAttackTransitionTime>k__BackingField: 0.4

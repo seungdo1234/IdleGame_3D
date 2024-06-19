@@ -20,3 +20,4 @@ MonoBehaviour:
   <BaseAttackDelay>k__BackingField: 3
   <BaseAttackTransitionTime>k__BackingField: 0.4
   <BaseScanRange>k__BackingField: 80
+  <BaseGoldReward>k__BackingField: 5
