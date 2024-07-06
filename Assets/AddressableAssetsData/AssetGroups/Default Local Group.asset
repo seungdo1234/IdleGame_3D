@@ -29,6 +29,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - default
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1db47ff7adf76f447a543d41440396e9
+    m_Address: Assets/DownLoad/coin2_20x20.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a5dd05869f4cd784c8bb87de8f2ab851, type: 2}
   m_SchemaSet:

@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: Material
   m_Data:
     m_SerializedData: []
-  m_GUID: 793c6204167d5d1468f2a651483526d1
+  m_GUID: bbb9c40ed58cfd6438a3a28da313df74
   m_SerializeEntries:
   - m_GUID: 31321ba15b8f8eb4c954353edc038b1d
     m_Address: Packages/com.unity.render-pipelines.universal/Runtime/Materials/Lit.mat
@@ -33,5 +33,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: a5dd05869f4cd784c8bb87de8f2ab851, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: db34468a8f2651f48a3d7b33b136038f, type: 2}
-    - {fileID: 11400000, guid: f036c15b53f60c64da0c635cda4f1951, type: 2}
+    - {fileID: 11400000, guid: a01f3109dd8236548bf65d6a20bfc6f2, type: 2}
+    - {fileID: 11400000, guid: e238006c6641f584e98de2c01d8ef8b4, type: 2}
