@@ -1,18 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class AddressableManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private AssetReferenceGameObject cubeObj;
+    [SerializeField] private AssetReferenceGameObject planeObj;
+
+
+    private List<GameObject> gameObjs = new List<GameObject>();
+
     void Start()
     {
-        
+        StartCoroutine(InitAddressable());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator InitAddressable()
     {
-        
+        var init = Addressables.InitializeAsync();
+        yield return init;
+    }
+
+    public void Button_SpawnObject()
+    {
+        cubeObj.InstantiateAsync().Completed += (obj) =>
+        {
+            gameObjs.Add(obj.Result);
+        };
+
+        planeObj.InstantiateAsync().Completed += (obj) =>
+        {
+            gameObjs.Add(obj.Result);
+        };
     }
 }

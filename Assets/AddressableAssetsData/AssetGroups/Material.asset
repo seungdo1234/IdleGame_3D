@@ -21,13 +21,13 @@ MonoBehaviour:
     m_Address: Packages/com.unity.render-pipelines.universal/Runtime/Materials/Lit.mat
     m_ReadOnly: 0
     m_SerializedLabels:
-    - default
+    - Material
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4735dc615c9be2f478fe62221c24ac04
     m_Address: Assets/Material/Plane.mat
     m_ReadOnly: 0
     m_SerializedLabels:
-    - default
+    - Material
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a5dd05869f4cd784c8bb87de8f2ab851, type: 2}
