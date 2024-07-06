@@ -9,7 +9,7 @@ public class AddressableManager : MonoBehaviour
     [SerializeField] private AssetReferenceGameObject planeObj;
 
 
-    private List<GameObject> gameObjs = new List<GameObject>();
+    [SerializeField]private List<GameObject> gameObjs = new List<GameObject>();
 
     void Start()
     {
@@ -33,5 +33,19 @@ public class AddressableManager : MonoBehaviour
         {
             gameObjs.Add(obj.Result);
         };
+    }
+
+    public void Button_ReleaseObject()
+    {
+        if(gameObjs.Count == 0)
+        {
+            return;
+        }
+
+        for(int i = gameObjs.Count - 1; i >= 0; i--)
+        {
+            Addressables.ReleaseInstance(gameObjs[i]);
+            gameObjs.RemoveAt(i);
+        }
     }
 }
