@@ -16,16 +16,7 @@ public class AddressableManager : MonoBehaviour
     // 생성된 오브젝트들을 저장하는 리스트
     private List<GameObject> gameObjs = new List<GameObject>();
 
-    void Start()
-    {
-        StartCoroutine(InitAddressable());
-    }
-
-    private IEnumerator InitAddressable()
-    {
-        var init = Addressables.InitializeAsync();
-        yield return init;
-    }
+ 
 
     public void Button_SpawnObject() // Load
     {
